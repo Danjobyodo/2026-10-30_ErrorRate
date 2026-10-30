@@ -1,0 +1,518 @@
+\documentclass[twocolumn,superscriptaddress,amsfont,amssymb,amsmath, showpacs,balancelastpage]{revtex4-1}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+\usepackage{environ}
+\usepackage{graphicx,color,dsfont}
+\usepackage{booktabs}
+\usepackage{floatrow}
+\usepackage[caption=false,label font={bf,normalsize}]{subfig}
+\floatsetup[figure]{style=plain,subcapbesideposition=top}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[all]{xy}
+\usepackage{relsize}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{accents}
+\hypersetup{linktocpage}
+\definecolor{darkblue}{RGB}{0,0,127} 
+\definecolor{darkgreen}{RGB}{0,150,0}
+\hypersetup{colorlinks=true,citecolor=red,linkcolor=darkblue, 
+	filecolor=red, urlcolor=darkblue,pdftitle={Clifford Hierarchy Stabilizer Codes: Transversal Non-Clifford Gates and Magic},
+pdfauthor={Ryohei Kobayashi, Guanyu Zhu, Po-Shen Hsin}}
+\usepackage{lmodern}
+\usepackage{mathtools}
+
+\newcommand\thickbar[1]{\accentset{\rule{.5em}{.5pt}}{#1}}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{remark}{Remark}
+
+
+\newcommand{\fixme}[1]{{\bf {\color{red}[#1]}}}
+\usepackage{lipsum}
+
+\newtheorem{definition}{Definition}
+
+\makeatletter
+\def\@opargbegintheorem#1#2#3{\trivlist
+   \item[]{\bfseries #1\ #2\ (#3)} \itshape}
+\makeatother
+
+\NewEnviron{eqs}{%
+\begin{equation}\begin{split}
+    \BODY
+\end{split}\end{equation}
+}
+
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+\interfootnotelinepenalty=10000 %Makes sure footnotes don't split across pages.
+
+\newcommand{\om}{\omega_2}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\be}{\boldsymbol e}
+\newcommand{\eps}{\epsilon}
+\newcommand{\br}{{\mathbf r}}
+\newcommand{\da}{{\delta a}}
+\newcommand{\dam}{{[\delta a]_2}}
+\newcommand{\de}{{\delta e}}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator*{\Motimes}{\text{\raisebox{0.25ex}{\scalebox{0.8}{$\bigotimes$}}}}
+\newcommand{\lr}[1]{ \langle {#1} \rangle}
+
+
+
+\def\U{\mathrm{U}(1)}
+\def\H{\mathcal{H}}
+\def\Hs{\mathsf{H}}
+\def\M{\mathcal{M}}
+\def\Z{\mathbb{Z}}
+\def\C{\mathcal{C}}
+\def\D{\mathcal{D}}
+\def\B{\mathcal{B}}
+\def\R{\mathcal{R}}
+\def\N{\mathcal{N}}
+\def\L{\mathcal{L}}
+\def\SS{\mathcal{S}}
+
+\newcommand{\cA}{\mathcal{A}}\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\bA}{\mathbb{A}}\newcommand{\bB}{\mathbb{B}}
+\newcommand{\bC}{\mathbb{C}}\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bE}{\mathbb{E}}\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bG}{\mathbb{G}}\newcommand{\bH}{\mathbb{H}}
+\newcommand{\bI}{\mathbb{I}}\newcommand{\bJ}{\mathbb{J}}
+\newcommand{\bK}{\mathbb{K}}\newcommand{\bL}{\mathbb{L}}
+\newcommand{\bM}{\mathbb{M}}\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bO}{\mathbb{O}}\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bS}{\mathbb{S}}\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bU}{\mathbb{U}}\newcommand{\bV}{\mathbb{V}}
+\newcommand{\bW}{\mathbb{W}}\newcommand{\bX}{\mathbb{X}}
+\newcommand{\bY}{\mathbb{Y}}\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfG}{\mathbf{G}}
+\newcommand{\bfI}{\mathbf{I}}
+\newcommand{\bfK}{\mathbf{K}}
+\newcommand{\bfL}{\mathbf{L}}
+\newcommand{\bfW}{\mathbf{W}}
+
+\newcommand{\FF}
+{\mathbb{F}}
+\newcommand{\Fc}
+{\mathcal{F}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\vc}[1]{\mathbf{#1}}
+\newcommand{\xx}{\hspace{4pt}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\nin}{\noindent}
+\newcommand{\up}{\uparrow}
+\newcommand{\down}{\downarrow}
+\newcommand{\non}{\nonumber}
+\newcommand{\lo}{\overline}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\green}[1]{\textcolor{Green}{#1}}
+
+\newcommand{\rd}{\textcolor{red}{r}}
+\newcommand{\bl}{\textcolor{blue}{b}}
+\newcommand{\gr}{\textcolor{Green}{g}}
+\newcommand{\yl}{\textcolor{Dandelion}{y}}
+
+\newcommand{\ryohei}[1]{\textcolor{red}{[RK: #1]}}
+\newcommand{\Guanyu}[1]{ { \color{blue} (Guanyu: {#1}) }}
+\newcommand{\change}[1]{\textcolor{black}{#1}}
+\newcommand{\furtherchange}[1]{\textcolor{purple}{#1}}
+
+\begin{document}
+
+
+\title{Clifford Hierarchy Stabilizer Codes: Transversal Non-Clifford Gates and Magic}
+
+
+
+\author{Ryohei Kobayashi}
+\email{ryok@ias.edu} 
+\affiliation{School of Natural Sciences, Institute for Advanced Study, Princeton, NJ 08540, USA}
+
+
+\author{Guanyu Zhu}
+\email{guanyu.zhu@ibm.com}
+\affiliation{IBM Quantum, IBM T.J. Watson Research Center, Yorktown Heights, NY 10598 USA}
+\affiliation{Kavli Institute of Theoretical Physics, Santa Barbara, CA 93106, USA}
+
+\author{Po-Shen Hsin}
+\email{po-shen.hsin@kcl.ac.uk}
+
+\affiliation{Department of Mathematics, King’s College London, Strand, London WC2R 2LS, UK}
+
+
+
+\begin{abstract}
+A fundamental problem in fault-tolerant quantum computation is the tradeoff between universality and dimensionality, exemplified by the the Bravyi-K\"onig bound for $n$-dimensional topological stabilizer codes.  In this work, we extend topological Pauli stabilizer codes to a broad class of $n$-dimensional Clifford hierarchy stabilizer codes. These codes correspond to the $(n+1)$D Dijkgraaf-Witten gauge theories with non-Abelian topological order.  We construct transversal non-Clifford gates through automorphism symmetries represented by cup products. In 2D, 
+we obtain the first transversal non-Clifford logical gates including T and CS for Clifford stabilizer codes, using the automorphism of the twisted $\mathbb{Z}_2^3$ gauge theory (equivalent to $\mathbb{D}_4$ topological order). We also combine it with the just-in-time decoder to fault-tolerantly prepare the logical T magic state in $O(d)$ rounds via code switching.   In 3D, we construct a transversal logical $\sqrt{\text{T}}$ gate in a non-Clifford stabilizer code at the third level of the Clifford hierarchy, located on a tetrahedron corresponding to a  twisted  $\mathbb{Z}_2^4$ gauge theory.  
+{Our constructions surpass the Bravyi-K\"onig bound by achieving the logical gates in the $(n+1)$-th level of Clifford hierarchy in $n$ spatial dimension.} 
+\medskip
+\noindent
+\end{abstract}
+
+
+% \bigskip \bigskip \bigskip
+ 
+ \date{\today}
+
+
+% \bigskip
+
+% \eject
+
+
+\maketitle
+
+
+% \tableofcontents
+
+
+\unitlength = .8mm
+
+\setcounter{tocdepth}{3}
+
+\bigskip
+
+\textit{Introduction.}  The space-time overhead for achieving universality remain a central challenge in fault-tolerant quantum computation \cite{Kubica:2021}. The Bravyi-König theorem establishes that transversal logical gates--more generally, constant-depth circuits--in $n$-dimensional topological Pauli stabilizer codes are restricted in the $n^\text{th}$-level of Clifford hierarchy \cite{Bravyi:2013dx}.  For instance, realizing a non-Clifford gate at the third level necessitates at least a three-dimensional code, incurring $O(d^3)$ space or space-time overhead (with $d$ the code distance). An alternative approach using the ``just-in-time'' decoder \cite{bombin20182d, Browneaay4929} enables computation on a two-dimensional layout by emulating the 3D code within a (2+1)D spacetime framework, maintaining the same space-time overhead while reducing the spatial overhead to $O(d^2)$.  A fundamental question is general principles for lowering space or space-time overhead for logical non-Clifford gates. 
+
+In recent years, symmetry has emerged as a powerful organizing principle for constructing transversal logical gates \cite{Yoshida_gate_SPT_2015, 
+ Yoshida_global_symmetry_2016, Yoshida2017387, Zhu:2017tr, zhu:2022fractal, Barkeshli:2022wuz,Barkeshli:2022edm,zhu2023non,Barkeshli:2023bta,Kobayashi2024crosscap,Hsin2024_non-Abelian,Hsin2024:classifying, zhu2025topological, zhu2025transversal}. Higher-form symmetries provide addressable logical gates \cite{zhu2023non, Hsin2024:classifying}, while higher-group symmetries organize Clifford hierarchy of logical gates \cite{Barkeshli:2022wuz, Barkeshli:2022edm}. Non-invertible symmetry is important in gauging and measurements in lattice surgery \cite{Horsman_2012, williamson2024low,huang2025hybridlatticesurgerynonclifford} and code switching  \cite{Huang:2025cvt,Davydova:2025ylx,bauer2025planarfaulttolerantcircuitsnonclifford}. A large class of such gates are realized by constant-depth circuits and systematically classified in \cite{Hsin2024:classifying}, extending beyond the conventional color-code \cite{Kubica:2015mta}  or triorthogonality paradigm \cite{bravyi2012magic}.
+
+
+
+
+In this work, we introduce a family of Clifford hierarchy stabilizer codes in $n$ spatial dimensions generalizing topological Pauli stabilizer codes, whose stabilizers lie in the $n^\text{th}$ level of Clifford hierarchy $\C_n$,  defined recursively on $m$-qubit \change{unitary} $U$, i.e., $\C_n:=\{U \in \mathbb{U}_m: \change{U \mathcal{P}_m U^\dagger} \subset \C_{n-1} \}$, where $\C_1=\mathcal{P}_m$ is the Pauli group and $\C_2$ is the Clifford group~\cite{Gottesman1999hierarchy}. 
+\change{This generalizes XS, XP stabilizer codes using phase gates \cite{Ni2015XS, Webster2022XP}.}
+We construct transversal logical T, CS gates in a 2D Clifford stabilizer code via the automorphism symmetry in the corresponding twisted $\mathbb{Z}_2^3$ gauge theory in (2+1)D. Such a code corresponds to a non-Abelian $\mathbb{D}_4$ topological order, realized on the ion-trap platform \cite{Iqbal:2023wvm}.  This work therefore represents a conceptual advance, providing the first demonstration of transversal non-Clifford gates in 2D Clifford stabilizer codes (see also the parallel work in \cite{Tyler2025groupsurfacecode}).
+
+We then show how this transversal logical T gate can be deployed in a fault-tolerant protocol:
+we combine the transversal T gate with code switching between a folded surface code and the non-Abelian code
+via gauging measurements/condensation, together with the ``just-in-time'' decoder of Ref.~\cite{Davydova:2025ylx},
+to prepare a logical $T$ magic state in $O(d)$ rounds.
+Related works~\cite{bauer2025low,Davydova:2025ylx} interpret the spacetime protocols of
+Refs.~\cite{bombin20182d,Browneaay4929} as a spacetime (2+1)D path integral in the same twisted $\mathbb{Z}_2^3$ gauge theory,
+yielding a non-Clifford logical operation
+(equivalently~\cite{magic_patent}).
+\change{Our key conceptual advance is that we explicitly construct an invertible, finite-depth circuit
+ acting entirely within the non-Abelian code---a concrete automorphism (invertible symmetry of a code)
+that preserves the code space and realizes the transversal non-Clifford logical action directly,
+rather than an effective spacetime implementation.}
+
+
+
+
+This approach generalizes to a transversal logical $R_{N}=\text{diag}(1, e^{i 2\pi/2^N})$ gate in the $N^\text{th}$ level of Clifford hierarchy $\C_N$ in $N-1$ spatial dimensions, including the $\sqrt{\text{T}}$ gate at the fourth level $\mathcal{C}_4$ in 3D.
+{Our construction surpasses the Bravyi-K\"onig bound for Pauli codes by one dimension.}
+
+
+\change{
+Interestingly, in spatial dimensions $n\ge 3$ we expect these non-Abelian codes to admit single-shot code switching with surface codes, driven by the confinement of magnetic flux loops (membranes) \cite{Bombin:2015hia}, analogous to 3D surface codes. More precisely, confinement suggests single-shot correction for non-Abelian fluxes, while a complete protocol must also correct the charge errors in a single shot. A natural route is a subsystem formulation in the spirit of gauge color codes, which can enable single-shot recovery via redundant local checks \cite{Bombin:2016dq}, or a dimensional-jump strategy \cite{Browneaay4929} adapted to the present dressed-stabilizer setting. Establishing such a fully single-shot switching/decoding procedure and its threshold is left for future work.
+}
+
+
+
+\textit{Clifford stabilizer code in 2D and T gate.}
+Our stabilizer code in 2D is a (non-commuting) Clifford stabilizer code: 
+\change{the generators $\{S_j\}$ of the stabilizer group $\mathcal{S}$ are local Clifford unitaries. The generators are not generally commutative, and the code space is spanned by the stabilizer states satisfying $S_j\ket{\psi}=\ket{\psi}$ for all $j$. This generalizes XS stabilizer codes \cite{Ni2015XS} to generic Clifford operators.}
+
+We will present a Clifford stabilizer code that is a special case of those constructed in \cite{Hsin2024_non-Abelian} in generic dimensions, where we focus on 2D.
+On the 2D lattice (triangulation), each edge has 3 qubits, whose Pauli $Z$ eigenvalues label the gauge fields $Z^{\red{r}}=(-1)^{a_{\red{r}}},Z^{\green{g}}=(-1)^{a_{\green{g}}},Z^{\blue{b}}=(-1)^{a_{\blue{b}}}$ with $a_{\red{r}},a_{\green{g}},a_{\blue{b}}$ being operator-valued 1-cochains with eigenvalues $0,1$.
+Similarly, there are Pauli $X$ operators $X^{\red{r}},X^{\green{g}},X^{\blue{b}}$ on each edge. The Clifford stabilizer is generated by
+\begin{align}
+    \mathcal{S} = \left\{ \mathcal{S}_{X}^{\red{r}},\mathcal{S}_{X}^{\green{g}},\mathcal{S}_{X}^{\blue{b}},\mathcal{S}_{Z}^{\red{r}},\mathcal{S}_{Z}^{\green{g}},\mathcal{S}_{Z}^{\blue{b}}\right\}~,
+\end{align}
+with the stabilizer $\mathcal{S}_{X}$ supported at vertices $v$ of the 2D lattice. $X$-stabilizers are generated by $S^{\red{r}}_{X;v},S^{\green{g}}_{X;v},S^{\blue{b}}_{X;v}$ on each vertex $v$ with the form
+\change{
+\begin{align}
+\begin{split}
+    S_{X;v}^{\red{r}} &= \left(\prod_{\partial e\supset v} X^{\rd}_e\right) \prod_{e',e'':\int\tilde v\cup \tilde e'\cup \tilde e''\neq 0}CZ^{\gr,\bl}_{e',e''}~, \\
+    S_{X;v}^{\gr} &= \left(\prod_{\partial e\supset v} X^{\gr}_e\right) \prod_{e',e'': \int\tilde e''\cup \tilde v\cup \tilde e'\neq 0}
+   CZ^{\bl,\rd}_{e,e'}~,\\
+   S_{X;v}^{\bl} &= \left(\prod_{\partial e\supset v} X^{\bl}_e\right)\prod_{e',e'':\int \tilde e'\cup \tilde e''\cup \tilde v\neq 0} CZ^{\rd,\gr}_{e',e''}~,
+   \label{eq:Sr v}
+   \end{split}
+\end{align}
+}
+where $\cup$ denotes cup product of cochains (see SM Sec.~\ref{app:cup} for a review). 
+\change{$\tilde v$ is a 0-cochain that takes value 1 on vertex $v$ and 0 on other vertices, and $\tilde e$ is a 1-cochain that takes value $1$ on edge $e$ and 0 on other edges. $CZ^{c,c'}_{e,e'}$ is the CZ gate for a pair of qubits with colors $c,c'$, on edges $e,e'$.}
+$\mathcal{S}_Z^{\red{r}}$ is generated by $S^{\red{r}}_{Z;f}$ on each face with
+\begin{align}
+    S^{\red{r}}_{Z;f} = \prod_{e\in \partial f} Z_e^{\red{r}}~.
+\end{align}
+Other $Z$-stabilizers with colors $\green{g},\blue{b}$ are defined in the same fashion. The $X$-stabilizers with different colors (e.g., $\mathcal{S}_{X}^{\red{r}},\mathcal{S}_{X}^{\green{g}}$) are commutative in the $Z$-stabilizer subspace of $\mathcal{S}_{Z}^{\red{r}}, \mathcal{S}_{Z}^{\green{g}},\mathcal{S}_{Z}^{\blue{b}}$, therefore $\mathcal{S}$ forms a non-commuting stabilizer group.
+{See Fig.~\ref{fig:trianglehamiltonian} for illustrations of $X,Z$-stabilizers on a square lattice.}
+
+The code space is equivalent to a twisted $\mathbb{Z}_2^3 = \Z_2^{\red{r}}\times\Z_2^{\green{g}}\times\Z_2^{\blue{b}}$ gauge theory, with the Dijkgraaf-Witten twist $(-1)^{\int a_{\rd}\cup a_{\gr}\cup a_{\bl}}$.
+This theory has 22 anyons including $e_{\rd}, e_{\gr}, e_{\bl}, m_{\rd}, m_{\gr}, m_{\bl}$, whose notations are aligned with \cite{Iqbal:2023wvm}; $m$ denotes magnetic fluxes, and $e$ denotes electric charges of $\Z_2^3$ gauge theory. $e$, $m$ with the same color has $(-1)$ mutual braiding due to the Aharanov-Bohm phase.
+
+The underlying gauge group $\mathbb{Z}_2^3$ has automorphism permuting group elements. 
+We focus on the automorphism transforming the elements as 
+\begin{equation}\label{eqn:automorphism}
+    (g_{\red{r}},g_{\green{g}},g_{\blue{b}})\in \{0,1\}^3\rightarrow (g_{\red{r}}, g_{\rd} + g_{\gr} + g_{\bl} , g_{\bl})~,
+\end{equation}
+which transforms the gauge groups as $\Z_2^{\rd}\leftrightarrow \Z_2^{\rd\gr}:= \text{diag}(\Z_2^{\rd},\Z_2^{\gr})$, $\Z_2^{\gr}\leftrightarrow \Z_2^{\gr}$,  $\Z_2^{\bl}\leftrightarrow\Z_2^{\gr\bl}$.
+
+We show that the above automorphism induces an emergent symmetry on the Clifford stabilizers, i.e. preserves the logical subspace.
+The automorphism symmetry $U$ is constructed from the product of transversal automorphism $V$ and another operator $W$, where
+\begin{align}
+    V= \bigotimes_e \text{CNOT}^{(\rd,\gr)}_{e} \text{CNOT}^{(\bl,\gr)}_{e}~,
+    \label{eq:transversalCNOT}
+\end{align}
+which transforms the Pauli $X$ operators according to the automorphism (\ref{eqn:automorphism}): $X_e^{\rd} \leftrightarrow X_e^{\rd} X_e^{\gr}$ and $X_e^{\bl} \leftrightarrow X_e^{\bl} X_e^{\gr}$. Pauli $Z$ operators are transformed as $Z_e^{\gr} \leftrightarrow Z_e^{\rd} Z_e^{\gr} Z_e^{\bl}$.
+The operator $V$ induces the desired automorphism \eqref{eqn:automorphism} of the gauge group. 
+\change{However, $V$ is not yet an emergent symmetry of the Clifford stabilizers; for instance, while Pauli $X$ operators are transformed as $X_e^{\rd} \leftrightarrow X_e^{\rd} X_e^{\gr}$, the $X$-stabilizers are not preserved by $V$: $VS^{\rd}_{X;v}V^\dagger \neq S^{\rd}_{X;v}S^{\gr}_{X;v}$.
+The true symmetry hence requires additional modification $W$ to be specified below.}
+
+
+The true emergent symmetry $U$ is obtained by dressing $V$ with additional transversal operators. While the symmetry operator $U$ can be defined on generic triangulations,
+on a 2D square lattice it is
+\begin{equation}
+\begin{split}
+\label{eqn:automorphismsymmetryoperator}
+     U =  WV~, \quad 
+     W & = \exp\left(\pi i \int \frac{a_{\rd} \cup a_{\bl}}{2}\right) \\
+       &= \prod_{p=(0123)} \text{CS}^{\rd,\bl}_{e_{01},e_{13}}(\text{CS}^{\rd,\bl}_{e_{02},e_{23}})^\dagger~,
+     \end{split}
+\end{equation}
+where $(a_{\rd} \cup a_{\bl})/2$ is a 2-cochain integrated over a 2d space. $\text{CS}^{\rd,\bl}_{e,e'}$ is a controlled-S gate for the red qubit at the edge $e$ and blue at $e'$, multiplied over plaquettes with vertices labeled by $0,1,2,3$ (see Fig.~\ref{fig:CS}). The operator $U$ then preserves the stabilizer group, e.g., $US^{\rd}_{X;v}U^\dagger = S^{\rd}_{X;v}S^{\gr}_{X;v}$, see SM Sec.~\ref{sec:proof of theorem 1} for derivations.
+This extra operator $W$ plays a crucial role for getting non-Clifford logical action.
+As shown in SM Sec.~\ref{app:Tgate}, the unitary operator $U$ preserves the logical subspace:
+\begin{theorem}
+    The unitary operator $U$ preserves the logical subspace and thus is a logical gate of the Clifford stabilizer code.
+\end{theorem}
+In the following, we describe a setup where $U$ implements a logical T gate.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.5\linewidth]{CS.pdf}
+    \caption{The operator $W$ is expressed using cup product of cochains $a_{\rd}, a_{\bl}$ for $\Z_2$ gauge fields. This operator corresponds to a product of CS, CS$^\dagger$ operators on each plaquette.  }
+    \label{fig:CS}
+\end{figure}
+
+
+\medskip
+
+Consider the Clifford stabilizer on an triangle with three gapped boundaries. 
+Gapped boundaries are characterized by
+symmetry breaking from the bulk $\mathbb{Z}_2^3$ gauge group to subgroups on the boundaries \cite{Beigi_2011,Hsin2024:classifying}; the first boundary ${\cal L}_{\rd}$ breaks $\mathbb{Z}_2^3$ to $\mathbb{Z}_2^{\gr}\times\mathbb{Z}_2^{\bl}$. The second boundary ${\cal L}_{\bl}$ breaks the gauge group to $\mathbb{Z}_2^{\rd}\times \Z_2^{\gr}$, while the third boundary ${\cal L}_{\rd\bl}$ breaks to the diagonal $\mathbb{Z}^{\rd\bl}_2$.
+These symmetry breaking at boundaries are represented by the boundary conditions of gauge fields,
+\begin{align}
+    \begin{split}
+        \mathcal{L}_{\rd}: a_{\rd} = 0~, \quad \ \mathcal{L}_{\bl}: a_{\bl} = 0~, \quad 
+        \mathcal{L}_{\rd\bl}: a_{\rd} + a_{\bl} = a_{\gr} = 0~. \\
+    \end{split}
+    \label{eq:2Dgaugefields boundaryconditions}
+\end{align}
+In the terminology of \cite{Kitaev_2012} for rough and smooth boundaries, the boundary ${\cal L}_{\rd}$ is the rough boundary for $\mathbb{Z}^{\rd}_2$ and smooth boundary for $\mathbb{Z}_2^{\gr}\times\mathbb{Z}_2^{\bl}$; the boundary ${\cal L}_{\bl}$ is rough for $\mathbb{Z}_2^{\bl}$ and smooth for $\mathbb{Z}_2^{\rd}\times \Z_2^{\gr}$; ${\cal L}_{\rd\bl}$ is rough for $\mathbb{Z}_2^{\gr}$ and a new ``mixed'' boundary for $\mathbb{Z}_2^{\rd},\mathbb{Z}_2^{\bl}$ where the combined electric charge $e_{\rd\bl}$ and combined magnetic flux $m_{\rd\bl}$ are condensed, as well as the excitations formed by their products. The boundary stabilizers on a square lattice with this triangular boundaries are shown in Fig.~\ref{fig:trianglehamiltonian}.
+
+
+
+
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{triangle.pdf}
+    \caption{The stabilizer model is defined on a triangle with gapped boundaries $\mathcal{L}_{\rd}, \mathcal{L}_{\bl}, \mathcal{L}_{\rd\bl}$. (a): The logical $Z$ operator is a junction of string operators $e_{\rd}, e_{\bl}, e_{\rd\bl}$ ending at boundaries. Each electric charge $e_{\rd}, e_{\bl}, e_{\rd\bl}$ corresponds to a product of Pauli $Z$ operators along the string. (b): There is the other topological operator formed by a junction of $m_{\bl}, m_{\rd}, m_{\rd\bl}$. This anti-commutes with the logical Pauli $Z$ operator. The figure also shows the boundary conditions of gauge fields. }
+    \label{fig:triangle}
+\end{figure}
+
+The model on this triangle region has a Hilbert space of a single logical qubit: 
+\begin{lemma}
+The Clifford stabilizer model with the boundary condition has a single logical qubit.
+\end{lemma}
+\begin{proof}
+    The state is generally labeled by the eigenvalues of nontrivial electric charge operators $e_{\rd},e_{\gr},e_{\bl}$, which characterizes the configuration of $\Z_2^3$ gauge fields on a space.
+    On the triangle, the only non-contractible Pauli $Z$ string operator is the junction of electric charges $e_{\rd}, e_{\bl}, e_{\rd\bl}$ shown in Fig.~\ref{fig:triangle} (a). To see that this Pauli $Z$ operator can have nontrivial eigenvalues, let us consider the other topological operator formed by the junction of $m_{\bl}, m_{\rd}, m_{\rd\bl}$ as shown in ~\ref{fig:triangle} (b). This anti-commutes with the Pauli $Z$ operator, so the Hilbert space has a single qubit $\{\ket{0},\ket{1}\}$ labeled by the Pauli $Z$ eigenvalue. 
+
+
+    
+\end{proof}
+
+
+
+The automorphism symmetry $U$ preserves the boundaries: the unbroken gauge group for each of the boundaries at each boundary, $\Z_2^{\gr}\times \Z_2^{\bl}, \Z_2^{\rd}\times\Z_2^{\gr}, \Z_2^{\rd\bl}$, is invariant under the automorphism \eqref{eqn:automorphism}. 
+Thus the automorphism symmetry $U$ 
+generates a logical gate with boundaries.
+
+\begin{theorem}
+    The automorphism symmetry $U$ in the Clifford stabilizer model with the boundary condition implements logical T gate.
+\end{theorem}
+The detailed proof is in SM Sec.~\ref{app:Tgateboundary}. To obtain the non-Clifford action, it is essential that in the presence of gapped boundaries, the logical operator $U=WV$ acquires boundary modifications \cite{Hsin2024:classifying}. For instance, on a square lattice with boundary conditions shown in Fig.~\ref{fig:trianglehamiltonian}, the logical operator is $U=WV$ with $V$ given by \eqref{eq:transversalCNOT}, and $W$ gets modified as
+\begin{equation}\label{eqn:automorphismsymmetryboundary}
+     W = 
+     \prod_{p=(0123)} \text{CS}^{\rd,\bl}_{e_{01},e_{13}}(\text{CS}^{\rd,\bl}_{e_{02},e_{23}})^\dagger \times \prod_{e\in \text{bdry}_{\rd\bl}} (\text{T}^{\rd}_{e})^\dagger~,
+\end{equation}
+where the second product is over edges on the boundary $\mathcal{L}_{\rd\bl}$. As shown in SM Sec.~\ref{app:Tgateboundary}, these boundary operators contribute as a logical T$^\dagger$ gate;
+the automorphism symmetry $U$ acts on the logical qubit in the Pauli $Z$ basis as $U\overline{|m\rangle}= e^{-\frac{\pi i m}{4}}\overline{|m\rangle}=\overline{\text{T}}^\dagger\overline{|m\rangle}$, $m=0,1$.
+
+
+Let us compare the transversal logical T gate with the construction in \cite{Davydova:2025ylx}, where a T gate of a folded surface code on a triangle is obtained via code switching through the $\mathbb{D}_4$ gauge theory. The code switching corresponds to the action of the gapped domain wall separating the $\Z_2^2$ gauge theory for a folded surface code and the $\mathbb{D}_4$ gauge theory; in the spacetime picture, $\mathbb{D}_4$ gauge theory is sandwiched by a pair of gapped domain walls DW and DW', see Fig.~\ref{fig:switching}. In fact, the two domain walls DW, DW' are related by the transversal unitary operator $\tilde U$ with $\text{DW'} = \text{DW} \times \tilde U$,
+where in their protocol, $\tilde U$ acts by an automorphism acting on the gauge groups as $\Z_2^{\rd}\leftrightarrow \Z_2^{\rd}, \Z_2^{\gr}\leftrightarrow \Z_2^{\bl}$.
+Also in their protocol, the $\mathbb{D}_4$ gauge theory on a triangle is bounded by the following three boundary conditions $\tilde{\mathcal{L}}_{\rd}, \tilde{\mathcal{L}}_{\bl},\tilde{\mathcal{L}}_{\rd\bl}$ with the unbroken gauge groups
+\begin{align}
+    \tilde{\mathcal{L}}_{\rd}: \Z_2^{\gr}\times \Z_2^{\bl}, \quad  \tilde{\mathcal{L}}_{\bl}: \Z_2^{\rd\gr}\times \Z_2^{\rd\bl}, \quad \tilde{\mathcal{L}}_{\rd\bl}: \Z_2^{\rd}.
+\end{align}
+
+
+One can then see that the above unitary $\tilde U$, together with the gapped boundaries $\tilde{\mathcal{L}}_{\rd},\tilde{\mathcal{L}}_{\bl},\tilde{\mathcal{L}}_{\rd\bl}$ are transformed into the ones without tilde by an automorphism of gauge groups
+\begin{align}
+    (g_{\red{r}},g_{\green{g}},g_{\blue{b}})\in \{0,1\}^3\rightarrow (g_{\red{r}},  g_{\gr}, g_{\rd} + g_{\gr} + g_{\bl})~,
+    \label{eq:autofortilde gauge fields}
+\end{align}
+which transforms the gauge groups as $\Z_2^{\rd}\leftrightarrow \Z_2^{\rd\bl}$, $\Z_2^{\gr}\leftrightarrow \Z_2^{\gr\bl}$,  $\Z_2^{\bl}\leftrightarrow\Z_2^{\bl}$, inducing an automorphism of $\mathbb{D}_4$ gauge theory.
+Therefore, by interpreting the domain walls $\text{DW'}\times (\text{DW})^\dagger$ as the action of transversal unitary $\text{DW}\times \tilde U\times  (\text{DW})^\dagger$, the action of $\tilde U$ on the $\mathbb{D}_4$ gauge theory is identified as a logical T gate $U$ by an automorphism \eqref{eq:autofortilde gauge fields}. 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{switching.pdf}
+    \caption{Bottom left: The code switching is understood as a combination of gapped domain walls $\text{DW'}\times \text{DW}^\dagger$, where each domain wall separates $\mathbb{D}_4$ and $\Z_2^2$ gauge theory. Bottom right: The domain wall DW' is equivalent to a combination $\text{DW}\times \tilde U$ with an transversal unitary $\tilde U$. Top: By an automorphism \eqref{eq:autofortilde gauge fields}, the operator $\tilde U$ is identified as the logical T gate $U$.}
+    \label{fig:switching}
+\end{figure}
+
+Within our stabilizer code, the $\text{T}$ magic state can be fault-tolerantly prepared by the following code switching along with the logical T gate:
+\begin{enumerate}
+    \item We start with a logical state $\overline{\ket{+}}$ of the  $\Z_2^{\rd}\times\Z_2^{\bl}$ gauge theory with boundaries, whose stabilizers are simply obtained by eliminating green qubits from Fig.~\ref{fig:trianglehamiltonian}. 
+    The code space is equivalent to a folded surface code.
+    We also initialize the green qubits as $\bigotimes_e \ket{0}^{\gr}_e$. 
+    \item We then perform $O(d)$ rounds of syndrome measurements ($d$ is the distance) of the unknown Clifford stabilizers $S_{X;v}^{\gr}$ (with $\pm 1$ random eigenvalues) and the other Clifford and Pauli $Z$ stabilizers in the entire code; \change{this prepares a state of the Clifford stabilizer code \cite{Tantivasadakarn2024LRE, verresen2022efficient, Tantivasadakarn2023shortest}.}
+    Meanwhile, we apply the ``just-in-time" decoder from Ref.~\cite{Davydova:2025ylx}.  The non-abelian flux errors \change{violating the plaquette $Z$-stabilizers} 
+    are paired up  in real time  to form closed flux worldline whenever the observation time of the syndromes is comparable to the separation of the syndromes. After the $O(d)$ rounds of syndrome measurements, we use the matching or RG decoder \cite{ducloscianci2010renormalizationgroupdecodingalgorithm} to clean up the remaining Abelian charge syndromes and the corresponding $Z$ errors.  The above procedure is also called a gauging procedure, where one effectively switches the code space into the $\mathbb{D}_4$ code.
+    \item We act the logical T$^\dagger$ gate $U$.
+    \item We then measure the Pauli $Z^{\gr}_e$ operators on each edges, followed by acting $S_X^{\gr}$ to flip the strings of $\ket{1}^{\gr}_e$ states. This switches the code back to the $\Z_2^{\rd}\times\Z_2^{\bl}$ surface code followed by $O(d)$ rounds of error corrections.
+    The final state is given by $\overline{\text{T}}^\dagger\overline{\ket{+}}$.
+\end{enumerate}
+
+
+In addition to T gate, we construct transversal logical CS gate using six layers of the 2D Clifford stabilizer model.
+We note that the CS gate in the 3D color code has been constructed in Ref.~\cite{brown2025colorcodelogicalcontrols}.
+See SM Sec.~\ref{sec:CS} for the construction of the logical CS gate in 2D. 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.75\linewidth]{triangle_hamiltonian.pdf}
+    \caption{The stabilizer on a square lattice surrounded by three gapped boundaries. The bottom boundary of the triangle $\mathcal{L}_{\rd\bl}$ is realized at the bottom and right boundaries of the square, therefore a square is bounded by three gapped boundaries. 
+    }
+    \label{fig:trianglehamiltonian}
+\end{figure}
+
+
+\textit{Non-Clifford stabilizer code in 3D and $\sqrt{T}$ gate.} 
+We extend our construction to 3D, where we construct a non-Clifford $\sqrt{\text{T}}$ gate at 4th level of the Clifford hierarchy in a $\Z_2^4$ twisted gauge theory. The Dijkgraaf-Witten twist is given by $(-1)^{\int a_{\rd}\cup a_{\yl}\cup a_{\bl}\cup a_{\gr} }$.
+On a 3D lattice, we now have four physical qubits colored by $\rd,\gr,\bl,\yl$ on each edge.
+The non-Clifford stabilizer is generated by
+\begin{align}
+    \mathcal{S} = \left\{ \mathcal{S}_{X}^{\red{r}},\mathcal{S}_{X}^{\green{g}},\mathcal{S}_{X}^{\blue{b}},\mathcal{S}_{X}^{\yl}, 
+    \mathcal{S}_{Z}^{\red{r}},\mathcal{S}_{Z}^{\green{g}},\mathcal{S}_{Z}^{\blue{b}},\mathcal{S}_{Z}^{\yl}\right\}~,
+\end{align}
+where the stabilizers $\mathcal{S}_X$ are supported at vertices. For instance, $\mathcal{S}_{X}^{\red{r}}$ is generated by $\mathcal{S}_{X}^{\red{r};v}$ on each vertex as
+\change{
+\begin{align}
+      S_{X;v}^{\red{r}} = \left(\prod_{\partial e\supset v} X^{\rd}_e\right) \prod_{\substack{e_1,e_2,e_3: \\ \int\tilde v\cup \tilde e_1\cup \tilde e_2\cup \tilde e_3\neq 0}}CCZ^{\yl,\bl,\gr}_{e_1,e_2, e_3}~,
+\end{align}
+}
+defined in a similar fashion as the 2D case.
+$\mathcal{S}_Z$ again are generated by the stabilizers on faces in the form of e.g., 
+\begin{align}
+    S^{\red{r}}_{Z;f} = \prod_{e\in \partial f} Z_e^{\red{r}}~.
+\end{align}
+See SM Sec.~\ref{app:sqT} for a complete description of stabilizers.
+
+To construct a $\sqrt{\text{T}}$ gate, we locate a code on a 3D tetrahedron with four gapped boundaries on faces.
+Each gapped boundary condition is specified by the boundary conditions of gauge fields:
+\begin{align}
+\nonumber    \begin{split}
+        \text{1st, 2nd, and 3rd boundary}\quad & a_{\bl} = 0,  \  a_{\rd} = 0, \ a_{\gr} = 0, \\
+        \text{4th boundary}\quad & a_{\rd}+a_{\gr} + a_{\bl} = a_{\yl} = 0~, \\
+    \end{split}
+\end{align}
+which naturally generalizes \eqref{eq:2Dgaugefields boundaryconditions}.
+These boundary conditions are enforced by boundary stabilizers
+$Z_{\bl}$ (1st boundary), $Z_{\rd}$ (2nd boundary), $Z_{\gr}$ (3rd boundary), and $Z_{\rd}Z_{\gr}Z_{\bl}, Z_{\yl}$ (4th boundary) on boundary edges. The $X$ stabilizers at the boundaries are obtained by truncating the stabilizers in $\mathcal{S}_X$ that commute with the above boundary $Z$ stabilizers. This naturally generalizes the construction of boundary $X$ stabilizers shown in Fig.~\ref{fig:trianglehamiltonian} to 3D.
+\change{The stabilizer code with above boundaries stores a single logical qubit; it has a single nontrivial $\Z_2^4$ gauge field configuration on a tetrahedron that corresponds to the logical $\ket{\overline{1}}$ state.} 
+Similar to the 2D case, there is a single logical $Z$ operator formed by a junction of $Z^{\rd}, Z^{\gr}, Z^{\bl}$ strings. See SM Sec.~\ref{app:sqT} for detailed discussions.
+
+The $\sqrt{\text{T}}$ gate again has an expression $U=WV$,
+with
+\begin{align}
+   V= \bigotimes_e \text{CNOT}^{(\rd,\yl)}_{e} \text{CNOT}^{(\gr,\yl)}_{e}\text{CNOT}^{(\bl,\yl)}_{e}~,
+\end{align}
+\change{and $W$ is expressed by a product of CCS gates in the 3D bulk, CT$^\dagger$ gates on the 4th boundary, and $\sqrt{\text{T}}$ gates on the 1D hinge between the 1st, 4th boundary. In SM Sec.~\ref{app:sqT}, we present an explicit form of $W$ and demonstrate that $U$ generates a logical $\sqrt{\text{T}}$ gate.}
+
+In conclusion, we discover transversal non-Clifford logical gates in Clifford hierarchy stabilizer codes, including  T, CS gates in 2D and $\sqrt{\text{T}}$ gate in 3D. 
+The code can be further generalized to twisted $\mathbb{Z}_2^N$ gauge theory in $(N-1)$ spatial dimensions with the Dijkgraaf-Witten twist $(-1)^{a_1\cup a_2\cup\cdots a_N}$ for the $\mathbb{Z}_2^N$ gauge fields $\{a_i\}_{i=1}^N$. In such cases, the $\mathcal{S}_X$ stabilizers have gates in the $(N-1)^\text{th}$ level of Clifford hierarchy, while $Z$-stabilizers are Pauli operators. Its automorphism symmetry can realize $\overline{R_{N}}$ logical gate. 
+{Our construction for the family of $\overline{R_{N}}$ logical gates surpasses the  Bravyi-K\"onig bound of Pauli codes.}
+Higher-hierarchy codes require increased local resources as $N$ increases; the generalized Bravyi-K\"onig bound can be viewed as a tradeoff between spatial dimension and local complexity in non-Pauli stabilizers.
+
+
+
+\section*{Acknowledgment}
+
+
+We thank Andreas Bauer, Tyler Ellison, Sheng-Jie Huang, Sakura Schafer-Nameki, Nat Tantivasadakarn, Julio Magdalena de la Fuente, Zhenghan Wang, Dominic Williamson for discussions. We thank Julio Magdalena de la Fuente for comments on the draft.
+R.K. is supported by the U.S. Department of Energy through grant number DE-SC0009988 and the Sivian Fund.
+G.Z. is supported by the U.S. Department of Energy, Office of Science, National Quantum
+Information Science Research Centers, Co-design Center
+for Quantum Advantage (C2QA) under contract number
+DE-SC0012704. G.Z was also  supported in part by grant NSF PHY-2309135 to the Kavli Institute for Theoretical Physics (KITP), where the work was completed.
+P.-S.H. is supported by Department of Mathematics King’s College
+London. 
+R.K. and P.-S.H. thank Isaac Newton Institute for hosting the workshop ``Diving Deeper into Defects: On the Intersection of Field Theory, Quantum Matter, and Mathematics'', during which part of the work is completed. Near the completion of our work, we learned of another upcoming work \cite{Tyler2025groupsurfacecode} that also discusses transversal non-Clifford gates in related codes in 2D.
+
+
+
+\bibliographystyle{utphys}
+\bibliography{biblio, mybib_merge}
+
+
+
+
+\onecolumngrid
+
+\vspace{0.3cm}
+
+\newpage
+
+\input{supp_mat.tex}
+
+\vfill
+
+
+
+\end{document}
+
+
+

@@ -1,0 +1,57 @@
+{
+  "code_version": "chsc_switch_v3",
+  "engine": "pauli_proxy_stim",
+  "datetime": "2026-10-20T04:03:18.041994",
+  "python": "3.13.16",
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+  "versions": {
+    "numpy": "2.1.3",
+    "scipy": "1.16.3",
+    "pymatching": "2.4.0",
+    "stim": "1.16.0",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.0"
+  },
+  "CFG": {
+    "case": "in_T_out",
+    "cases_to_run": null,
+    "noise_model": "phenomenological",
+    "d_values": [
+      3,
+      5,
+      7
+    ],
+    "rounds_in": null,
+    "rounds_out": null,
+    "shots": 20000,
+    "p_min": null,
+    "p_max": null,
+    "p_n": 8,
+    "seed": 20261017,
+    "switch_in_boundary": "ideal",
+    "boundaries_to_run": null,
+    "x_check_order": "rgb",
+    "jit_boundary_offset": 1.0,
+    "green_noise_after_switch_out": false,
+    "out_dir": "chsc_v3_results",
+    "resume": true,
+    "confidence_level": 0.95,
+    "save_pdf": true,
+    "save_manifest": true,
+    "run_self_checks": true,
+    "self_check_shots": 100,
+    "verbose": true
+  },
+  "case": "in_T_out",
+  "p_values": [
+    0.007999999999999997,
+    0.01039410578087527,
+    0.013504679373003094,
+    0.017546133242474816,
+    0.022797045620951934,
+    0.029619362959451733,
+    0.03848334897033503,
+    0.05000000000000001
+  ],
+  "conditions": "{\"code_version\": \"chsc_switch_v3\", \"green_noise_after_switch_out\": false, \"jit_boundary_offset\": 1.0, \"noise_model\": \"phenomenological\", \"rounds_in\": null, \"rounds_out\": null, \"seed\": 20261017, \"switch_in_boundary\": \"ideal\", \"x_check_order\": \"rgb\"}"
+}
