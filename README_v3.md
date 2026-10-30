@@ -24,6 +24,7 @@ v2 に対する Gemini と ChatGPT のレビューを検討し、**再現でき�
 | `chsc_v3_results/` | Colab で実行した本番結果（`in_T_out`, ideal, d=3,5,7, 8 点 × 20000 ショット）。CSV・交点・manifest |
 | `methods.md` | 非クリフォード回路を古典計算機で厳密に再現した方法（TBW 方式との関係を含む） |
 | `Paper(TexVersion)/` | 論文 *Clifford Hierarchy Stabilizer Codes* の本文と SM の TeX |
+| `2026-09-29_ExactEfficientSimulation.tex` | エンジンの元になった Takada–Bartlett–Williamson 論文（arXiv:2609.16929）の TeX（図なし）。コード中の節番号・Algorithm 番号の引用は、この本文と一致することを確認済み（methods.md §8） |
 
 ---
 
